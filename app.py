@@ -1,9 +1,17 @@
-tasks = []
+task_lib = []
 
-def addT():
-    task= input ("Please enter a task: ")
-    tasks.append(task)
-    print(f"The task {task} added to the list.")
+def addTask():
+    t_name = input ("Please enter a task: ")
+    t_priority = input("Please enter a priority: ")
+    t_deadline = input("Please enter a deadline: ")
+    task_lib.append({"task": t_name, "priority": t_priority, "deadline": t_deadline})
+    print("\n")
+
+    print(f"The task '{t_name}' with priority '{t_priority}' and deadline '{t_deadline}' was added to the list.")
+    print("\n")
+
+    # print(pd.DataFrame(task_lib))
+
 
 def listtasks():
     if not tasks:
@@ -12,6 +20,7 @@ def listtasks():
         print("Current tasks:")
         for index, task in enumerate(tasks):
             print(f"Task # {index}, {task}")
+
 
 def deleteTask ():
     listtasks()
@@ -26,6 +35,7 @@ def deleteTask ():
     except:
         print("Sorry, please enter a valid option")
 
+
 if __name__ == "__main__":
     print ("Hello this is your to do list")
     while True:
@@ -39,8 +49,8 @@ if __name__ == "__main__":
 
         choise = input ("Enter your choise: ")
 
-        if (choise =="1"):
-            addT()
+        if (choise == "1"):
+            addTask()
         elif (choise == "2"):
             deleteTask()
         elif (choise == "3"):
