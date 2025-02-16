@@ -1,12 +1,31 @@
+from datetime import datetime
+import pandas as pd
+
 task_lib = []
 
+
 def addTask():
+
     t_name = input ("Please enter a task: ")
     t_priority = input("Please enter a priority: ")
-    t_deadline = input("Please enter a deadline: ")
-    task_lib.append({"task": t_name, "priority": t_priority, "deadline": t_deadline})
-    print("\n")
 
+    def deadline():
+        while True:  # Loop until a valid date is entered
+            t_date_str = input("Please enter a deadline (YYYY-MM-DD): ")
+            # Validate the input of the user. If there is an error, request another input.
+            try:
+                # Convert the str to date and time format.
+                t_date = datetime.strptime(t_date_str, "%Y-%m-%d")
+                # Check whether the date is a future date.
+                if datetime.now() < t_date:
+                    return t_date
+                else:
+                    print("Please enter a future date")
+            except ValueError:
+                print("Invalid date format. Please use YYYY-MM-DD.")
+    t_deadline = deadline()
+
+    task_lib.append({"task": t_name, "priority": t_priority, "deadline": t_deadline})
     print(f"The task '{t_name}' with priority '{t_priority}' and deadline '{t_deadline}' was added to the list.")
     print("\n")
 
@@ -26,7 +45,7 @@ def deleteTask ():
     listtasks()
     try:
         task_to_delete= int(input("Write the # to delete: "))
-        if task_to_delete >=0 and task_to_delete < len(tasks):
+        if task_to_delete >= 0 and task_to_delete < len(tasks):
             tasks.pop(task_to_delete)
             print(f"The task {task_to_delete} was deleted")
         else:
@@ -48,6 +67,7 @@ if __name__ == "__main__":
         print("(4) Exit")
 
         choise = input ("Enter your choise: ")
+        print("\n")
 
         if (choise == "1"):
             addTask()
