@@ -7,11 +7,27 @@ task_lib = []
 def addTask():
 
     t_name = input ("Please enter a task: ")
-    t_priority = input("Please enter a priority: ")
+
+    print("Set the priority. Please, chose one of the following options")
+    print("(1) high,")
+    print("(2) medium")
+    print("(3) low")
+    def priority_choice():
+        while True:
+            choise = input("Enter your choice: ")
+            if (choise == "1"):
+                return "high"
+            elif (choise == "2"):
+                return "medium"
+            elif (choise == "3"):
+                return "low"
+            else:
+                print("Sorry, please enter a valid option")
+    t_priority = priority_choice()
 
     def deadline():
         while True:  # Loop until a valid date is entered
-            t_date_str = input("Please enter a deadline (YYYY-MM-DD): ")
+            t_date_str = input("Please enter the deadline (YYYY-MM-DD): ")
             # Validate the input of the user. If there is an error, request another input.
             try:
                 # Convert the str to date and time format.
@@ -26,6 +42,7 @@ def addTask():
     t_deadline = deadline()
 
     task_lib.append({"task": t_name, "priority": t_priority, "deadline": t_deadline})
+    print("\n")
     print(f"The task '{t_name}' with priority '{t_priority}' and deadline '{t_deadline}' was added to the list.")
     print("\n")
 
@@ -56,11 +73,13 @@ def deleteTask ():
 
 
 if __name__ == "__main__":
-    print ("Hello this is your to do list")
+    print("\n")
+    print ("HELLO THIS IS YOUR TO DO LIST")
+    print("\n")
     while True:
         print("")
-        print("Please select one of the following option")
         print("Hello, what do you wanna do today?")
+        print("Please select one of the following option")
         print("(1) Add Task")
         print("(2) Remove Task")
         print("(3) View Tasks")
