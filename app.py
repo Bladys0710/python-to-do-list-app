@@ -1,6 +1,8 @@
 ### Updated code:
 from datetime import datetime
 import pandas as pd
+from datetime import datetime
+import pandas as pd
 
 task_lib = []
 
@@ -94,6 +96,12 @@ def deleteTask():
         print("Sorry, please enter a valid option")
 
 
+def sugestionTask():
+    df = pd.DataFrame(task_lib)
+    df.sort_values(by="deadline",ascending= True, inplace=True)
+    print(f"Hello! Here are some tasks you might want to work on:")
+    print(df[0:3])
+
 if __name__ == "__main__":
     print("\n")
     print ("HELLO. THIS IS YOUR TO DO LIST!")
@@ -115,8 +123,9 @@ if __name__ == "__main__":
             deleteTask()
         elif (choice == "3"):
             listtasks ()
-        elif (choice == "4"):
-            break
+        elif (choise == "4"):
+            sugestionTask()
+        elif (choise == "5"):
         else:
             print("Sorry, please enter a valid option")
     print("Goodbye")
