@@ -1,4 +1,4 @@
-
+### Updated code:
 from datetime import datetime
 import pandas as pd
 
@@ -29,18 +29,18 @@ def addTask():
                     return task
     t_name = task_name()
 
-    print("Set the priority. Please, chose one of the following options")
-    print("(1) high,")
-    print("(2) medium")
-    print("(3) low")
+    print("Set the priority. Please, chose one of the following options:")
+    print(" (1) high,")
+    print(" (2) medium")
+    print(" (3) low")
     def priority_choice():
         while True:
-            choise = input("Enter your choice: ")
-            if (choise == "1"):
+            choice = input("Enter your choice: ")
+            if (choice == "1"):
                 return "high"
-            elif (choise == "2"):
+            elif (choice == "2"):
                 return "medium"
-            elif (choise == "3"):
+            elif (choice == "3"):
                 return "low"
             else:
                 print("Sorry, please enter a valid option")
@@ -96,27 +96,26 @@ def deleteTask():
 
 if __name__ == "__main__":
     print("\n")
-    print ("HELLO THIS IS YOUR TO DO LIST")
-    print("\n")
+    print ("HELLO. THIS IS YOUR TO DO LIST!")
     while True:
         print("")
-        print("Hello, what do you wanna do today?")
-        print("Please select one of the following option")
-        print("(1) Add Task")
-        print("(2) Remove Task")
-        print("(3) View Tasks")
-        print("(4) Exit")
+        print("What do you wanna do today?")
+        print("Please select one of the following options:")
+        print(" (1) Add Task")
+        print(" (2) Remove Task")
+        print(" (3) View Tasks")
+        print(" (4) Exit")
 
-        choise = input ("Enter your choise: ")
+        choice = input ("Enter your choice: ")
         print("\n")
 
-        if (choise == "1"):
+        if (choice == "1"):
             addTask()
-        elif (choise == "2"):
+        elif (choice == "2"):
             deleteTask()
-        elif (choise == "3"):
+        elif (choice == "3"):
             listtasks ()
-        elif (choise == "4"):
+        elif (choice == "4"):
             break
         else:
             print("Sorry, please enter a valid option")
