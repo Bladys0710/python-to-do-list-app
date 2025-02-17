@@ -1,4 +1,3 @@
-### Updated code:
 from datetime import datetime
 import pandas as pd
 
@@ -78,6 +77,12 @@ def listtasks():
         print("Current tasks:")
         for index, task in enumerate(tasks):
             print(f"Task # {index}, {task}")
+
+
+    def priority_order():
+        prio_order = {"High": 1, "Medium": 2, "Low": 3}
+        sorted_order = sorted(task_lib, key=lambda  x: prio_order[x["priority"]])
+        return sorted_order
 
 
 def deleteTask():
