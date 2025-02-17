@@ -48,11 +48,11 @@ def addTask():
 
     def deadline():
         while True:  # Loop until a valid date is entered
-            t_date_str = input("Please enter the deadline (YYYY-MM-DD): ")
+            t_date_str = input("Please enter the deadline (YYYY-MM-DD HH:MM): ")
             # Validate the input of the user. If there is an error, request another input.
             try:
                 # Convert the str to date and time format.
-                t_date = datetime.strptime(t_date_str, "%Y-%m-%d")
+                t_date = datetime.strptime(t_date_str, "%Y-%m-%d %H:%M")
                 # Check whether the date is a future date.
                 if datetime.now() < t_date:
                     # Format the time before returning
@@ -60,7 +60,7 @@ def addTask():
                 else:
                     print("Please enter a future date")
             except ValueError:
-                print("Invalid date format. Please use YYYY-MM-DD.")
+                print("Invalid date format. Please use YYYY-MM-DD HH:MM")
     t_deadline = deadline()
 
     task_lib.append({"task": t_name, "priority": t_priority, "deadline": t_deadline})
