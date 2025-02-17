@@ -50,12 +50,17 @@ def addTask():
 
 
 def listtasks():
-    if not tasks:
+    if not task_lib:
         print ("There are no tasks in here.")
     else:
         print("Current tasks:")
-        for index, task in enumerate(tasks):
+        for index, task in enumerate(task_lib):
             print(f"Task # {index}, {task}")
+
+    def priority_order():
+        prio_order = {"High": 1, "Medium": 2, "Low": 3}
+        sorted_order = sorted(task_lib, key=lambda  x: prio_order[x["priority"]])
+        return sorted_order
 
 
 def deleteTask ():
