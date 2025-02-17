@@ -80,12 +80,12 @@ def listtasks():
             print(f"Task # {index}, {task}")
 
 
-def deleteTask ():
+def deleteTask():
     listtasks()
     try:
-        task_to_delete= int(input("Write the # to delete: "))
-        if task_to_delete >= 0 and task_to_delete < len(tasks):
-            tasks.pop(task_to_delete)
+        task_to_delete = int(input("Write the # to delete: "))
+        if task_to_delete >= 0 and task_to_delete < len(task_lib):
+            task_lib.pop(task_to_delete)
             print(f"The task {task_to_delete} was deleted")
         else:
             print(f"The task {task_to_delete} not found")
