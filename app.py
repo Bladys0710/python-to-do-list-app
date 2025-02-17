@@ -1,3 +1,4 @@
+
 from datetime import datetime
 import pandas as pd
 
@@ -6,7 +7,27 @@ task_lib = []
 
 def addTask():
 
-    t_name = input ("Please enter a task: ")
+    def task_name():
+        while True:
+            task = input("Please enter a task: ")
+            if task == "":
+                print("Please enter a valid task.")
+            # Check the first character of the task. It must be a letter!
+            elif not task[0].isalpha():
+                print("Please enter a valid task. Must start with a letter")
+            elif len(task) > 200:
+                print("Please enter a valid task. 200 characters maximum")
+            else:
+                # Capitalize the 1st letter.
+                task = task[0].capitalize() + task[1:]
+                # Enforcing punctuation at the en of the string.
+                if not task[len(task)-1] in ".!?":
+                    # Remove " " from the right and concatenate the input with "." using + operator.
+                    task = task.rstrip(" ") + "."
+                    return task
+                else:
+                    return task
+    t_name = task_name()
 
     print("Set the priority. Please, chose one of the following options")
     print("(1) high,")
@@ -34,7 +55,8 @@ def addTask():
                 t_date = datetime.strptime(t_date_str, "%Y-%m-%d")
                 # Check whether the date is a future date.
                 if datetime.now() < t_date:
-                    return t_date
+                    # Format the time before returning
+                    return t_date.strftime("%Y-%m-%d %H:%M")
                 else:
                     print("Please enter a future date")
             except ValueError:
@@ -99,4 +121,3 @@ if __name__ == "__main__":
         else:
             print("Sorry, please enter a valid option")
     print("Goodbye")
-
