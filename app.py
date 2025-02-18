@@ -34,12 +34,12 @@ def addTask():
     print(" (3) low")
     def priority_choice():
         while True:
-            choice = input("Enter your choice: ")
-            if choice == "1":
+            p_choice = input("Enter your choice: ")
+            if p_choice == "1":
                 return "high"
-            elif choice == "2":
+            elif p_choice == "2":
                 return "medium"
-            elif choice == "3":
+            elif p_choice == "3":
                 return "low"
             else:
                 print("Sorry, please enter a valid option")
