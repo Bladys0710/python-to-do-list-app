@@ -75,8 +75,13 @@ def listtasks():
         print ("There are no tasks in here.")
     else:
         print("Current tasks:")
-        for index, task in enumerate(tasks):
+        for index, task in enumerate(task_lib):
             print(f"Task # {index}, {task}")
+
+    def priority_order():
+        prio_order = {"High": 1, "Medium": 2, "Low": 3}
+        sorted_order = sorted(task_lib, key=lambda  x: prio_order[x["priority"]])
+        return sorted_order
 
 
 def deleteTask():
@@ -92,8 +97,7 @@ def deleteTask():
     except:
         print("Sorry, please enter a valid option")
 
-
-def sugestionTask():
+def suggestionTask():
     df = pd.DataFrame(task_lib)
     df.sort_values(by="deadline",ascending= True, inplace=True)
     print(f"Hello! Here are some tasks you might want to work on:")
@@ -102,28 +106,31 @@ def sugestionTask():
 
 if __name__ == "__main__":
     print("\n")
-    print ("HELLO. THIS IS YOUR TO DO LIST!")
+    print ("HELLO THIS IS YOUR TO DO LIST")
+    print("\n")
     while True:
         print("")
-        print("What do you wanna do today?")
-        print("Please select one of the following options:")
-        print(" (1) Add Task")
-        print(" (2) Remove Task")
-        print(" (3) View Tasks")
-        print(" (4) Exit")
+        print("Hello, what do you wanna do today?")
+        print("Please select one of the following option")
+        print("(1) Add Task")
+        print("(2) Remove Task")
+        print("(3) View Tasks")
+        print("(4) Suggestion Task")
+        print("(5) Exit")
 
-        choice = input ("Enter your choice: ")
+        choise = input ("Enter your choise: ")
         print("\n")
 
-        if (choice == "1"):
+        if (choise == "1"):
             addTask()
-        elif (choice == "2"):
+        elif (choise == "2"):
             deleteTask()
-        elif (choice == "3"):
+        elif (choise == "3"):
             listtasks ()
         elif (choise == "4"):
-            sugestionTask()
+            suggestionTask()
         elif (choise == "5"):
+            break
         else:
             print("Sorry, please enter a valid option")
     print("Goodbye")
