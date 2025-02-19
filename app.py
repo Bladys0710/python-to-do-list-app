@@ -80,7 +80,7 @@ def list_tasks():
         #     print(f"Task {index}, {task}")
 
     df.sort_values(by=["deadline", "priority"], ascending= True, inplace= True)
-    print(df[0:3])
+    print(df[0:3].to_string(index=False))
 
 
 def deleteTask():
