@@ -70,23 +70,21 @@ def addTask():
     # print(pd.DataFrame(task_lib))
 
 
-def listtasks():
-    if not tasks:
+def list_tasks():
+    df = pd.DataFrame(task_lib)
+    if not task_lib:
         print ("There are no tasks in here.")
     else:
         print("Current tasks:")
-        for index, task in enumerate(tasks):
-            print(f"Task # {index}, {task}")
+        # for index, task in enumerate(task_lib):
+        #     print(f"Task {index}, {task}")
 
-
-    def priority_order():
-        prio_order = {"High": 1, "Medium": 2, "Low": 3}
-        sorted_order = sorted(task_lib, key=lambda  x: prio_order[x["priority"]])
-        return sorted_order
+    df.sort_values(by=["deadline", "priority"], ascending= True, inplace= True)
+    print(df[0:3])
 
 
 def deleteTask():
-    listtasks()
+    list_tasks()
     try:
         task_to_delete = int(input("Write the # to delete: "))
         if task_to_delete >= 0 and task_to_delete < len(task_lib):
@@ -119,7 +117,7 @@ if __name__ == "__main__":
         elif (choice == "2"):
             deleteTask()
         elif (choice == "3"):
-            listtasks ()
+            list_tasks()
         elif (choice == "4"):
             break
         else:
