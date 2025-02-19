@@ -75,12 +75,22 @@ def list_tasks():
     if not task_lib:
         print ("There are no tasks in here.")
     else:
-        print("Current tasks:")
-        # for index, task in enumerate(task_lib):
-        #     print(f"Task {index}, {task}")
+        print("Set the priority. Please, chose one of the following options:")
+        print(" (1) deadline,")
+        print(" (2) priority")
+        preference = input("Please enter your choice (1/2): ").strip()
 
-    df.sort_values(by=["deadline", "priority"], ascending= True, inplace= True)
-    print(df[0:3].to_string(index=False))
+        if preference == "1":
+            sorted_preference =  "deadline"
+        elif preference == "2":
+            sorted_preference = "priority"
+        else:
+            print("Invalid input. Sorted by deadline is default")
+            sorted_preference = "deadline"
+
+        df.sort_values(by=[sorted_preference], ascending= True, inplace= True)
+        print(f"{sorted_preference}")
+        print(df.to_string(index=False))
 
 
 def deleteTask():
