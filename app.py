@@ -75,15 +75,18 @@ def list_tasks():
     if not task_lib:
         print ("There are no tasks in here.")
     else:
-        print("Set the priority. Please, chose one of the following options:")
+        print("Set the priority. Please, choose one of the following options:")
         print(" (1) deadline,")
         print(" (2) priority")
-        preference = input("Please enter your choice (1/2): ").strip()
+        print(" (3) name")
+        preference = input("Please enter your choice (1/2/3): ").strip()
 
         if preference == "1":
             sorted_preference =  "deadline"
         elif preference == "2":
             sorted_preference = "priority"
+        elif preference == "3":
+            sorted_preference = "task"
         else:
             print("Invalid input. Sorted by deadline is default")
             sorted_preference = "deadline"
