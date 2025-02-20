@@ -1,3 +1,4 @@
+### Updated code:
 from datetime import datetime
 import pandas as pd
 
@@ -109,6 +110,12 @@ def deleteTask():
     except:
         print("Sorry, please enter a valid option")
 
+def suggestionTask():
+    df = pd.DataFrame(task_lib)
+    df.sort_values(by="deadline",ascending= True, inplace=True)
+    print(f"Hello! Here are some tasks you might want to work on:")
+    print(df[0:3])
+
 
 if __name__ == "__main__":
     print("\n")
@@ -120,7 +127,8 @@ if __name__ == "__main__":
         print(" (1) Add Task")
         print(" (2) View Tasks")
         print(" (3) Remove Task")
-        print(" (4) Exit")
+        print(" (4) Suggestion Task")
+        print(" (5) Exit")
 
         choice = input ("Enter your choice: ")
         print("\n")
@@ -132,6 +140,8 @@ if __name__ == "__main__":
         elif choice == "3":
             deleteTask()
         elif choice == "4":
+            suggestionTask()
+        elif choice == "5":
             break
         else:
             print("Sorry, please enter a valid option")
