@@ -4,7 +4,7 @@ import pandas as pd
 task_lib = []
 
 
-def addTask():
+def add_task():
 
     def task_name():
         while True:
@@ -126,7 +126,7 @@ if __name__ == "__main__":
         print("\n")
 
         if choice == "1":
-            addTask()
+            add_task()
         elif choice == "2":
             list_tasks ()
         elif choice == "3":
