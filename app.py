@@ -29,7 +29,7 @@ def add_task():
     t_name = task_name()
 
     print("Set the priority. Please, chose one of the following options:")
-    print(" (1) high,")
+    print(" (1) high")
     print(" (2) medium")
     print(" (3) low")
     def priority_choice():
@@ -67,22 +67,20 @@ def add_task():
     print(f"The task '{t_name}' with priority '{t_priority}' and deadline '{t_deadline}' was added to the list.")
     print("\n")
 
-    # print(pd.DataFrame(task_lib))
-
 
 def list_tasks():
     df = pd.DataFrame(task_lib)
     if not task_lib:
-        print ("There are no tasks in here.")
+        print ("There are no tasks in here!")
     else:
         print("Set the priority. Please, choose one of the following options:")
-        print(" (1) deadline,")
+        print(" (1) deadline")
         print(" (2) priority")
         print(" (3) name")
         preference = input("Please enter your choice (1/2/3): ").strip()
 
         if preference == "1":
-            sorted_preference =  "deadline"
+            sorted_preference = "deadline"
         elif preference == "2":
             sorted_preference = "priority"
         elif preference == "3":
@@ -93,21 +91,25 @@ def list_tasks():
 
         df.sort_values(by=[sorted_preference], ascending= True, inplace= True)
         print(f"{sorted_preference}")
-        print(df.to_string(index=False))
+        # print(df.to_string(index=False))
+        print(df.to_string)
 
 
-def deleteTask():
+def delete_task():
     list_tasks()
     try:
-        task_to_delete = int(input("Write the # to delete: "))
+        task_to_delete = int(input("Enter the number of the task to delete: "))
+        # Checking if the input correspond to a row on the dataFrame!
         if task_to_delete >= 0 and task_to_delete < len(task_lib):
+            # Remove the task based on the index on the dataFrame.
             task_lib.pop(task_to_delete)
-            print(f"The task {task_to_delete} was deleted")
+            print(f"The task number: {task_to_delete} was deleted")
         else:
-            print(f"The task {task_to_delete} not found")
+            print(f"The task number: {task_to_delete} was not found")
 
-    except:
+    except ValueError:
         print("Sorry, please enter a valid option")
+
 
 def suggestion_task():
     df = pd.DataFrame(task_lib)
@@ -137,7 +139,7 @@ if __name__ == "__main__":
         elif choice == "2":
             list_tasks ()
         elif choice == "3":
-            deleteTask()
+            delete_task()
         elif choice == "4":
             suggestion_task()
         elif choice == "5":
